@@ -1,0 +1,6 @@
+// Function to handle image carousel functionality
+const imageCarouselFunc = function () {
+  // TODO...
+};
+
+export default imageCarouselFunc;

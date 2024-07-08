@@ -1,3 +1,41 @@
 * {
   box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+header {
+  padding: 20px;
+  background-color: rgb(178, 255, 255);
+}
+
+.nav {
+  display: flex;
+}
+
+/* Dropdown Styles */
+.dropdown-container {
+  width: max-content;
+  height: max-content;
+}
+.dropdown-container > .dropdown-btn {
+  background-color: antiquewhite;
+}
+.dropdown-container > .dropdown-content {
+  display: none;
+  border-style: solid;
+  border-width: 2px;
+  width: max-content;
+}
+.dropdown-container > .dropdown-content.visible {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  z-index: 1;
+  background-color: antiquewhite;
+}
+
+.splitter {
+  height: 100px;
+  background-color: brown;
 }
