@@ -1,2 +1,2 @@
-# todo-list
-The Odin Project / Todo List assignment
+# Template
+My template.
