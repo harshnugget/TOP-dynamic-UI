@@ -5,17 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title></title>
+    <title>Dynamic User Interface</title>
 </head>
 
 <body>
     <header>
-        <h1>Header</h1>
+        <h1>Dynamic User Interface</h1>
     </header>
     <main>
         <div class="nav">
             <div class="dropdown-container">
-                <button type="button" class="dropdown-btn">Dropdown</button>
+                <button type="button" class="dropdown-btn">Dropdown 1</button>
                 <div class="dropdown-content">
                     <a href="#">Link 1</a>
                     <a href="#">Link 2</a>
@@ -23,7 +23,7 @@
                 </div>
             </div>
             <div class="dropdown-container">
-                <button type="button" class="dropdown-btn">Dropdown</button>
+                <button type="button" class="dropdown-btn">Dropdown 2</button>
                 <div class="dropdown-content">
                     <a href="#">Link 1</a>
                     <a href="#">Link 2</a>
@@ -31,8 +31,24 @@
                 </div>
             </div>
         </div>
-
-        <div class="splitter"></div>
+        <div class="image-carousel-container">
+            <div class="image-carousel-content">
+                <!-- Image containers go here -->
+                <div class="image-container">
+                    <img src="#" alt="Image 1">
+                    <img src="#" alt="Image 2">
+                    <img src="#" alt="Image 3">
+                </div>
+            </div>
+            <button type="button" class="left-btn">&#11164</button>
+            <button type="button" class="right-btn">&#11166;</button>
+            <div class="navigation-dots-container">
+                <!-- Navigation dots go here -->
+                <div class="navigation-dot"></div>
+                <div class="navigation-dot"></div>
+                <div class="navigation-dot"></div>
+            </div>
+        </div>
     </main>
     <footer></footer>
 </body>

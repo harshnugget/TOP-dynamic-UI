@@ -1,3 +1,11 @@
+:root {
+  --image-carousel-width: 300px;
+  --image-carousel-height: 300px;
+  --primary-color: rgb(178, 255, 255);
+  --secondary-color: antiquewhite;
+  --secondary-color-hover: #ecdecc;
+}
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -5,12 +13,24 @@
 }
 
 header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 20px;
-  background-color: rgb(178, 255, 255);
+  background-color: var(--primary-color);
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .nav {
   display: flex;
+  justify-content: center;
+  margin: 10px;
+  gap: 10px;
 }
 
 /* Dropdown Styles */
@@ -19,23 +39,92 @@ header {
   height: max-content;
 }
 .dropdown-container > .dropdown-btn {
-  background-color: antiquewhite;
+  background-color: var(--secondary-color);
+  cursor: pointer;
+  padding: 10px;
+}
+.dropdown-container > .dropdown-btn:hover {
+  background-color: var(--secondary-color-hover);
 }
 .dropdown-container > .dropdown-content {
   display: none;
-  border-style: solid;
-  border-width: 2px;
   width: max-content;
+  border: 2px solid black;
+  background-color: var(--secondary-color);
+  padding: 5px;
+  margin-top: -2px;
 }
 .dropdown-container > .dropdown-content.visible {
   display: flex;
   flex-direction: column;
   position: absolute;
   z-index: 1;
-  background-color: antiquewhite;
 }
 
-.splitter {
-  height: 100px;
-  background-color: brown;
+/* Image carousel styles */
+.image-carousel-container {
+  position: relative;
+  width: var(--image-carousel-width);
+  height: var(--image-carousel-height);
+  overflow: hidden;
+  margin: 20px 0;
+}
+.image-carousel-container > .image-carousel-content {
+  position: relative; /* For re-positioning images */
+  display: flex;
+  align-items: center;
+}
+.image-carousel-container > .image-carousel-content img {
+  object-fit: cover;
+}
+.image-carousel-container > .left-btn,
+.image-carousel-container > .right-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: var(--secondary-color);
+  color: black;
+  font-size: 1.2rem;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  z-index: 2;
+  line-height: 1;
+  cursor: pointer;
+}
+.image-carousel-container > .left-btn {
+  margin: 5px;
+  padding-right: 2px;
+  left: 0;
+}
+.image-carousel-container > .right-btn {
+  margin: 5px;
+  padding-left: 2px;
+  right: 0;
+}
+.image-carousel-container > .left-btn:hover,
+.image-carousel-container > .right-btn:hover {
+  background-color: var(--secondary-color-hover);
+}
+.image-carousel-container > .navigation-dots-container {
+  display: flex;
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  gap: 10px;
+}
+.image-carousel-container > .navigation-dots-container > .navigation-dot {
+  height: 20px;
+  width: 20px;
+  border-style: solid;
+  border-radius: 50%;
+  border-color: black;
+  cursor: pointer;
+}
+.image-carousel-container > .navigation-dots-container > .navigation-dot.active {
+  border-color: brown;
+}
+.image-carousel-container > .navigation-dots-container > .navigation-dot:hover:not(.active) {
+  border-color: grey;
 }
