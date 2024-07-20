@@ -9,9 +9,9 @@ const imageCarouselModule = (() => {
       // Validate array length
       if (imageSources.length > MAXLENGTH) {
         console.warn(
-          `imageSources array exceeds limit of ${MAXLENGTH}. Only the first 5 images will be used.`
+          `imageSources array exceeds limit of ${MAXLENGTH}. Only the first ${MAXLENGTH} images will be used.`
         );
-        imageSources = imageSources.slice(0, MAXLENGTH); // Use only the first 5 images
+        imageSources = imageSources.slice(0, MAXLENGTH); // Use only the first [MAXLENGTH] images
       }
       this.imageSources = imageSources;
       this.carousel = {
@@ -27,15 +27,17 @@ const imageCarouselModule = (() => {
 
     buildCarouselStructure(container) {
       // Clear container
-      container.textContent = '';
+      container.textContent = null;
 
       // Create elements
+      const contentWrapper = document.createElement('div');
       const content = document.createElement('div');
       const rightBtn = document.createElement('button');
       const leftBtn = document.createElement('button');
       const navigationDotsContainer = document.createElement('div');
 
       // Add classes
+      contentWrapper.classList.add('image-carousel-content-wrapper');
       content.classList.add('image-carousel-content');
       rightBtn.classList.add('right-btn');
       leftBtn.classList.add('left-btn');
@@ -50,7 +52,8 @@ const imageCarouselModule = (() => {
       leftBtn.innerHTML = '&#11164'; // Unicode character or text
 
       // Append elements to container
-      container.append(content, rightBtn, leftBtn, navigationDotsContainer);
+      contentWrapper.append(content);
+      container.append(contentWrapper, rightBtn, leftBtn, navigationDotsContainer);
 
       // Store references in this.carousel
       this.carousel = {
@@ -64,9 +67,11 @@ const imageCarouselModule = (() => {
 
     // Initialization
     initializeCarousel() {
+      // Start a timer for cycling through carousel automatically
+      timer = this.startTimer(); // Set to null for no timer
+
       this.carousel.content.innerHTML = '';
       this.carousel.navigationDotsContainer.innerHTML = '';
-      timer = this.startTimer();
 
       const imgWidth = this.carousel.container.offsetWidth;
       const imgHeight = this.carousel.container.offsetHeight;
@@ -149,7 +154,9 @@ const imageCarouselModule = (() => {
     // Function to shift the image carousel
     shiftCarousel(direction, index) {
       // Clear the timeout
-      clearTimeout(timer);
+      if (timer) {
+        clearTimeout(timer);
+      }
 
       const imageWidth = this.carousel.container.offsetWidth;
       const scrollWidth = this.carousel.content.scrollWidth;
@@ -196,7 +203,9 @@ const imageCarouselModule = (() => {
       this.setActiveNavigationDot(newPos / imageWidth);
 
       // Restart timer
-      timer = this.startTimer();
+      if (timer) {
+        timer = this.startTimer();
+      }
     }
 
     startTimer() {
