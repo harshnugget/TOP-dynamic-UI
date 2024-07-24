@@ -67,6 +67,9 @@ const imageCarouselModule = (() => {
 
     // Initialization
     initializeCarousel() {
+      // Set the index/carousel position to 0
+      xPos = 0;
+
       // Start a timer for cycling through carousel automatically
       timer = this.startTimer(); // Set to null for no timer
 
